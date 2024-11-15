@@ -2,26 +2,30 @@
 
 const newItems = [
     {
-        image: "http://demo.st-marron.info/roulette/sample/star.png",
+        text: "1",
         background: "#AEE8FF"
     },
     {
-        image: "http://demo.st-marron.info/roulette/sample/flower.png",
+        text: "2",
         background: "#AEE8FF"
     },
     {
-        image: "http://demo.st-marron.info/roulette/sample/coin.png",
+        text: "3",
         background: "#FFE8B6"
     },
     {
-        image: "http://demo.st-marron.info/roulette/sample/mshroom.png",
+        text: "4",
         background: "#FFE8B6"
     },
     {
-        image: "http://demo.st-marron.info/roulette/sample/chomp.png",
+        text: "5",
         background: "#F2B4A7"
     },
-]
+    {
+        text: "6",
+        background: "#F2B4A7"
+    }
+];
 
 class Roulette {
 
