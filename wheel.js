@@ -1,5 +1,3 @@
-
-
 const newItems = [
     {
         text: "1",
@@ -28,42 +26,30 @@ const newItems = [
 ];
 
 class Roulette {
-
     constructor() {
         this.SIZE = 128;
         this.LENGTH = 80;
         this.DURATION = 5000;
-
         this.progress = 0;
-
         this.startTime = 0;
         this.lastItem = 0;
-
         this.level = 0;
-        
         this.roulette = document.getElementById("roulette");
         this.items = this.roulette.children;
     }
 
-    init(images) {
-        if (!Array.isArray(images)) {
-            console.log("You need to pass images as an array!");
+    init(items) {
+        if (!Array.isArray(items)) {
+            console.log("You need to pass items as an array!");
         }
-
-        images.forEach(item => {
-            const img = new Image();
-            img.src = item.image;
-        });
 
         for (let i = 0; i < 6; i++) {
             const item = this.items[i];
-
-            const itemSelected = this.getItem()
-            
+            const itemSelected = this.getItem();
             item.style.position = 'absolute';
             item.style.transform = `translateX(${i * this.SIZE}px)`;
-            item.lastChild.src = itemSelected.image;
-            item.style.background = itemSelected.background
+            item.textContent = itemSelected.text;
+            item.style.background = itemSelected.background;
         }
     }
 
@@ -72,7 +58,7 @@ class Roulette {
         this.progress = 0;
         this.lastItem = lastItem;
         this.startTime = Date.now();
-
+        
         for (let i = 0; i < 6; i++) {
             this.items[i].value = 0;
         }
@@ -112,13 +98,13 @@ class Roulette {
                 const selectedItem = this.getItem();
 
                 item.value = index;
-                item.lastChild.src = selectedItem.image;
-                item.style.background = selectedItem.background
+                item.textContent = selectedItem.text;
+                item.style.background = selectedItem.background;
 
                 if (this.level == this.LENGTH - 3) {
                     const lastSelectedItem = this.getItem(this.lastItem);
-                    item.lastChild.src = lastSelectedItem.image;
-                    item.style.background = lastSelectedItem.background
+                    item.textContent = lastSelectedItem.text;
+                    item.style.background = lastSelectedItem.background;
                 }
             }
         }
@@ -132,14 +118,10 @@ class Roulette {
         val = typeof val !== "undefined" ? val : Math.floor(Math.random() * newItems.length);
         return newItems[val];
     }
-
 }
 
 const roulette = new Roulette();
 roulette.init(newItems);
 
-
 const btnStart = document.getElementById("roulette-start");
-const selectWinner = document.getElementById("roulette-select-winner");
-
-btnStart.onclick = () => roulette.start(); // KYTIČKA
+btnStart.onclick = () => roulette.start();
